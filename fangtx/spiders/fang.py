@@ -74,7 +74,7 @@ class FangSpider(scrapy.Spider):
                 # 爬取指定城市信息
                 if city in crawlCity:
                     # 新房信息：追加爬取的RUL,交给调度器
-                    # yield scrapy.Request(new_house_url, callback=self.parse_newhouse, meta={"info": (province, city)})
+                    yield scrapy.Request(new_house_url, callback=self.parse_newhouse, meta={"info": (province, city)})
                     # 二手房信息：追加爬取的RUL,交给调度器
                     yield scrapy.Request(esf_house_url, callback=self.parse_esf, meta={'info': (province, city)})
 
@@ -157,6 +157,7 @@ class FangSpider(scrapy.Spider):
                     item['toward'] = info
                 else:
                     item['construct'] = info.replace("建筑年代：", "")
+            #
             item['address'] = dl.xpath(".//p[@class='mt10']/span/@title").get()
             item['area'] = dl.xpath(".//div[contains(@class,'area')]/p/text()").get()
             item['price'] = "".join(dl.xpath(".//div[@class='moreInfo']/p[1]//text()").getall())
