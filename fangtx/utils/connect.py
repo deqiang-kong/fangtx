@@ -3,10 +3,10 @@ from pymysql import cursors
 
 #
 dbparams = {
-    'host': 'rm-2zejbaw68504567cdgo.mysql.rds.aliyuncs.com',
+    'host': 'XXXXX',
     'port': 3307,
-    'user': 'kongdq',
-    'password': 'Qq452211',
+    'user': 'XXXXX',
+    'password': 'XXXXX',
     'database': 'fangtx',
     'charset': 'utf8',
     'cursorclass': cursors.DictCursor
